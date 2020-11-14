@@ -1,0 +1,57 @@
+{
+    "hote": "Intranet",
+    "temp": "38.0",
+    "info": [
+        {
+            "title": "Adresse IP",
+            "response": "192.168.20.5"
+        },
+        {
+            "title": "Distribution",
+            "response": "Raspbian GNU/Linux 10 (buster) - (10.6)"
+        },
+        {
+            "title": "Version du noyau",
+            "response": "Linux 5.4.61-v7l+ GNU/Linux"
+        },
+        {
+            "title": "Temps d'utilisation",
+            "response": "8 Semaines, 5 Jours, 18 Heures, 53 minutes"
+        }
+    ],
+    "cpu": [
+        {
+            "title": "0.18"
+        },
+        {
+            "title": "0.19"
+        },
+        {
+            "title": "0.23"
+        }
+    ],
+    "mem": [
+        {
+            "totalH": "3,8G",
+            "total": "4013871",
+            "use": "229199",
+            "useH": "218M"
+        }
+    ],
+    "swap": [
+        {
+            "totalH": "99M",
+            "total": "104853",
+            "use": "10485",
+            "useH": "10M"
+        }
+    ],
+    "sd": [
+        {
+            "totalH": "29G",
+            "total": "30364012",
+            "use": "5334828",
+            "useH": "5,1G"
+        }
+    ]
+}

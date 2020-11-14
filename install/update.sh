@@ -1,7 +1,7 @@
 #!/bin/bash
 
 git clone https://github.com/debmus/rpifo-web.git
-rm -rf /var/www/rpifo-web
+rm -rf /var/www/rpifo
 mv rpifo-web /var/www/rpifo
 
 apache2() {

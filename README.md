@@ -1,5 +1,7 @@
 # Rpifo-web [Beta]
 
+![](https://i.imgur.com/U3eqkEz.png)
+
 Application WEB pour la surveillance en temps réel du RaspberryPi
 ```bash
 # Installation rapide

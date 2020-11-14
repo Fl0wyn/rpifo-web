@@ -1,4 +1,4 @@
-# Rpifo-web
+# Rpifo-web [Beta]
 
 Application WEB pour la surveillance en temps réel du RaspberryPi
 ```bash

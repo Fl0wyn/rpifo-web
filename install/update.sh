@@ -27,6 +27,7 @@ apache2 >/etc/apache2/sites-available/rpifo.conf
 a2ensite rpifo > /dev/null
 
 systemctl reload apache2
+chmod +x /var/www/rpifo/etc/export_json.sh
 bash /var/www/rpifo/etc/export_json.sh
 
 echo "# Exportation des donnés de Rpifo Toutes les 5 minutes

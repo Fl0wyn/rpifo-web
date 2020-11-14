@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#apt update
-#apt install apache2 git
+apt update
+apt install apache2 git
 
-#git clone https://github.com/debmus/rpifo.git
+git clone https://github.com/debmus/rpifo.git
 mv rpifo /var/www/rpifo
 
 apache2() {

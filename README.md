@@ -1,8 +1,10 @@
 # Rpifo-web [Beta]
 
+Application WEB pour la surveillance en temps réel du RaspberryPi
+
 ![](https://i.imgur.com/U3eqkEz.png)
 
-Application WEB pour la surveillance en temps réel du RaspberryPi
+## Installaltion
 ```bash
 # Installation rapide
 curl -Ls https://raw.githubusercontent.com/debmus/rpifo-web/master/install/autoinstall.sh| sudo bash

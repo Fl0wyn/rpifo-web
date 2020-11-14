@@ -1,8 +1,8 @@
 #!/bin/bash
 
-git clone https://github.com/debmus/rpifo.git
-rm -rf /var/www/rpifo
-mv rpifo /var/www/rpifo
+git clone https://github.com/debmus/rpifo-web.git
+rm -rf /var/www/rpifo-web
+mv rpifo-web /var/www/rpifo
 
 apache2() {
 	cat <<conf

@@ -3,8 +3,8 @@
 apt update
 apt install apache2 git
 
-git clone https://github.com/debmus/rpifo.git
-mv rpifo /var/www/rpifo
+git clone https://github.com/debmus/rpifo-web.git
+mv rpifo-web /var/www/rpifo
 
 apache2() {
 	cat <<conf

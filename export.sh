@@ -96,4 +96,4 @@ echo "{
             \"useH\": \"$show_sd_used_H\"
         }
     ]
-}" >/var/www/rpifo/etc/result.json
+}" >/var/www/rpifo/result.json

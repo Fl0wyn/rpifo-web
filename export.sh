@@ -17,7 +17,7 @@ show_loadaverage=$(cat /proc/loadavg)
 show_loadaverage1=$(echo $show_loadaverage | awk '{print $1}')
 show_loadaverage2=$(echo $show_loadaverage | awk '{print $2}')
 show_loadaverage3=$(echo $show_loadaverage | awk '{print $3}')
-# Disque SD
+# Carte SD
 exec_df=$(df)
 exec_df_H=$(df -h)
 show_sd_total=$(echo "$exec_df" | awk '/root/ {print $2}')

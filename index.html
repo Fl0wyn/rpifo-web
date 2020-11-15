@@ -5,27 +5,8 @@
     <meta charset="UTF-8">
     <title>Rpifo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
-    <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
-    <link href="libraries/vuetify.min.css" rel="stylesheet">
-    <style>
-        .bg-framboise {
-            background-color: #BC1142 !important;
-            color: white;
-        }
-
-        .v-progress-circular {
-            margin: 1rem;
-        }
-
-        .afooter {
-            text-decoration: none;
-            color: #75A928 !important;
-        }
-
-        .afooter:hover {
-            color: #BC1142 !important;
-        }
-    </style>
+    <link href="img/favicon.png" rel="shortcut icon" type="image/x-icon">
+    <link href="lib/vuetify.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -33,136 +14,113 @@
         <v-app>
             <v-main>
 
-                <section v-if="errored">
-                    <v-alert color="red" outlined prominent text>
-                        Impossible de récupérer les informations !
-                    </v-alert>
-                </section>
+                <v-toolbar class="mb-2" color="#BC1142" dark flat>
+                    <v-img class="lg-4 mr-4" max-width="32" src="img/logo.svg"></v-img>
+                    <v-toolbar-title>
+                        Rpifo - {{ content.hote }} <v-chip class="ml-5" color="white" label outlined>Beta</v-chip>
+                    </v-toolbar-title>
+                </v-toolbar>
 
-                <div v-else>
-                    <v-toolbar class="mb-2" color="#BC1142" dark flat>
-                        <v-img class="lg-4 mr-4" max-width="32" src="images/logo.svg"></v-img>
-                        <v-toolbar-title>
-                            Rpifo - {{ content.hote }} <v-chip class="ml-5" color="white" label outlined>Beta</v-chip>
-                        </v-toolbar-title>
-                    </v-toolbar>
+                <v-container>
+                    <v-row gutters>
+                        <v-col cols="12" md="6" lg="4">
+                            <v-card>
 
-                    <v-container>
-                        <v-row gutters>
-
-                            <!-- Informations système  -->
-                            <v-col cols="12" md="12" lg="6">
-                                <v-card mx="auto">
-
-                                    <v-card-title class="bg-framboise">
-                                        <v-img src="images/info.svg" max-width="28" class="mr-6">
-                                        </v-img> Informations système
-                                    </v-card-title>
-                                    <v-simple-table>
-                                        <template v-slot:default>
-                                            <tbody>
-                                                <tr v-for="item in content.info" :key="item.title">
-                                                    <td>{{ item.title }}</td>
-                                                    <td>{{ item.response }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </template>
-                                    </v-simple-table>
-
-                                    <v-list-item>
-                                        <v-list-item-content v-for="item in content.mem" :key="item.total">
+                                <v-list>
+                                    <v-list-item v-for="item in content.info" :key="item.title">
+                                        <v-list-item-content>
+                                            <v-list-item-subtitle>{{ item.title }}</v-list-item-subtitle>
                                             <v-list-item-title>
-                                                <v-img src="images/temp.svg" max-width="20" class="mr-2 float-left">
-                                                </v-img>Température
+                                                {{ item.response }}
                                             </v-list-item-title>
-                                            <v-card-actions class="justify-center">
-                                                <v-progress-circular :rotate="-90" :size="150" :width="30"
-                                                    :value="content.temp" color="#75A928">
-                                                    <span class="text--primary">{{ content.temp }}°</span>
-                                                </v-progress-circular>
-                                            </v-card-actions>
                                         </v-list-item-content>
                                     </v-list-item>
+                                </v-list>
+                                <v-list-item>
 
-                                </v-card>
-                            </v-col>
+                                    <v-list-item-content v-for="item in content.mem" :key="item.total">
+                                        <v-list-item-title>
+                                            <v-img src="img/memory.svg" max-width="20" class="mr-2 float-left">
+                                            </v-img>Mémoire ({{ item.totalH }})
+                                        </v-list-item-title>
 
-                            <!-- Etat du système  -->
-                            <v-col cols="12" md="12" lg="6">
-                                <v-card mx="auto">
-                                    <v-card-title class="bg-framboise">
-                                        <v-img src="images/stat.svg" max-width="28" class="mr-6">
-                                        </v-img>
-                                        Etat du système
-                                    </v-card-title>
+                                        <v-progress-linear height="25"
+                                            :value="parseFloat(item.use/item.total*100).toFixed(2)" class="rounded-r-xl"
+                                            color="#75A928">
+                                            {{ item.useH + ' (' + parseFloat(item.use/item.total*100).toFixed(1) + '%)' }}
+                                        </v-progress-linear>
+                                    </v-list-item-content>
+                                </v-list-item>
+                                <v-list-item>
+                                    <v-list-item-content v-for="item in content.swap" :key="item.total">
+                                        <v-list-item-title>
+                                            <v-img src="img/swap.svg" max-width="20" class="mr-2 float-left">
+                                            </v-img>Swap ({{ item.totalH }})
+                                        </v-list-item-title>
 
-                                    <v-list-item>
-                                        <v-list-item-content v-for="item in content.mem" :key="item.total">
-                                            <v-list-item-title>
-                                                <v-img src="images/memory.svg" max-width="20" class="mr-2 float-left">
-                                                </v-img>Mémoire ({{ item.totalH }})
-                                            </v-list-item-title>
+                                        <v-progress-linear height="25"
+                                            :value="parseFloat(item.use/item.total*100).toFixed(2)" class="rounded-r-xl"
+                                            color="#75A928">
+                                            {{ item.useH + ' (' + parseFloat(item.use/item.total*100).toFixed(1) + '%)' }}
+                                        </v-progress-linear>
+                                    </v-list-item-content>
+                                </v-list-item>
+                                <v-list-item>
+                                    <v-list-item-content v-for="item in content.sd" :key="item.total">
+                                        <v-list-item-title>
+                                            <v-img src="img/sd.svg" max-width="20" class="mr-2 float-left">
+                                            </v-img>Disque ({{ item.totalH }})
+                                        </v-list-item-title>
 
-                                            <v-progress-linear height="25"
-                                                :value="parseFloat(item.use/item.total*100).toFixed(2)"
-                                                class="rounded-r-xl" color="#75A928">
-                                                {{ item.useH + ' (' + parseFloat(item.use/item.total*100).toFixed(1) + '%)' }}
-                                            </v-progress-linear>
-                                        </v-list-item-content>
-                                    </v-list-item>
-                                    <v-list-item>
-                                        <v-list-item-content v-for="item in content.swap" :key="item.total">
-                                            <v-list-item-title>
-                                                <v-img src="images/swap.svg" max-width="20" class="mr-2 float-left">
-                                                </v-img>Swap ({{ item.totalH }})
-                                            </v-list-item-title>
+                                        <v-progress-linear height="25"
+                                            :value="parseFloat(item.use/item.total*100).toFixed(2)" class="rounded-r-xl"
+                                            color="#75A928">
+                                            {{ item.useH + ' (' + parseFloat(item.use/item.total*100).toFixed(1) + '%)' }}
+                                        </v-progress-linear>
+                                    </v-list-item-content>
+                                </v-list-item>
+                            </v-card>
+                        </v-col>
 
-                                            <v-progress-linear height="25"
-                                                :value="parseFloat(item.use/item.total*100).toFixed(2)"
-                                                class="rounded-r-xl" color="#75A928">
-                                                {{ item.useH + ' (' + parseFloat(item.use/item.total*100).toFixed(1) + '%)' }}
-                                            </v-progress-linear>
-                                        </v-list-item-content>
-                                    </v-list-item>
-                                    <v-list-item>
-                                        <v-list-item-content v-for="item in content.sd" :key="item.total">
-                                            <v-list-item-title>
-                                                <v-img src="images/sd.svg" max-width="20" class="mr-2 float-left">
-                                                </v-img>Disque ({{ item.totalH }})
-                                            </v-list-item-title>
+                        <v-col cols="12" md="6" lg="4">
+                            <v-card>
 
-                                            <v-progress-linear height="25"
-                                                :value="parseFloat(item.use/item.total*100).toFixed(2)"
-                                                class="rounded-r-xl" color="#75A928">
-                                                {{ item.useH + ' (' + parseFloat(item.use/item.total*100).toFixed(1) + '%)' }}
-                                            </v-progress-linear>
-                                        </v-list-item-content>
-                                    </v-list-item>
+                                <v-card-title class="subtitle-1">
+                                    <v-img src="img/temp.svg" max-width="24" class="mr-2">
+                                    </v-img>
+                                    Température
+                                </v-card-title>
+                                <v-card-actions class="justify-center">
+                                    <v-progress-circular :rotate="-90" :size="120" :width="30" :value="content.temp"
+                                        color="#75A928">
+                                        <span class="text--primary">{{ content.temp }}°</span>
+                                    </v-progress-circular>
+                                </v-card-actions>
 
-                                    <v-card-title>
-                                        <v-img src="images/cpu.svg" max-width="24" class="mr-2">
-                                        </v-img>
-                                        Charge CPU
-                                    </v-card-title>
-                                    <v-card-actions class="justify-center">
-                                        <v-progress-circular class="justify-center" :rotate="-90" :size="120"
-                                            :width="30" v-for="item in content.cpu" :key="item.title"
-                                            :value="item.title/5*100" color="#75A928">
-                                            <span class="text--primary">{{ item.title }}</span>
-                                        </v-progress-circular>
-                                    </v-card-actions>
+                                <v-card-title class="subtitle-1">
+                                    <v-img src="img/cpu.svg" max-width="24" class="mr-2">
+                                    </v-img>
+                                    Charge CPU
+                                </v-card-title>
+                                <v-card-actions class="justify-center">
+                                    <v-progress-circular class="justify-center mx-2" :rotate="-90" :size="120"
+                                        :width="30" v-for="item in content.cpu" :key="item.title"
+                                        :value="item.title/5*100" color="#75A928">
+                                        <span class="text--primary">{{ item.title }}</span>
+                                    </v-progress-circular>
+                                </v-card-actions>
 
-                                </v-card>
-                            </v-col>
+                            </v-card>
+                        </v-col>
 
-                        </v-row>
-                    </v-container>
-                </div>
+                    </v-row>
+                </v-container>
+
             </v-main>
 
             <v-footer>
-                <v-col class="text-center grey--text" cols="12">
-                    v{{ version }} ©{{ new Date().getFullYear() }} - <a class="afooter"
+                <v-col class="text-center text--disabled" cols="12">
+                    v{{ version }} ©{{ new Date().getFullYear() }} - <a class="text--secondary"
                         href="https://github.com/debmus/rpifo-web" target="_blank" rel="noopener noreferrer">Rpifo</a>
                 </v-col>
             </v-footer>
@@ -170,9 +128,10 @@
         </v-app>
     </div>
 
-    <script src="libraries/vue.js"></script>
-    <script src="libraries/vuetify.min.js"></script>
-    <script src="libraries/axios.min.js"></script>
+    <script src="lib/vue.js"></script>
+    <!--     <script src="lib/vue.min.js"></script> -->
+    <script src="lib/vuetify.min.js"></script>
+    <script src="lib/axios.min.js"></script>
     <script>
         new Vue({
             el: '#app',
@@ -180,18 +139,17 @@
             data() {
                 return {
                     content: [],
-                    errored: false,
                     version: ''
                 }
             },
             mounted() {
-                fetch('VERSION')
+                fetch('/VERSION')
                     .then(r => r.text())
                     .then(t => {
                         this.version = t
                     }),
                     axios
-                        .get('result.json')
+                        .get('/result.json')
 
                         .then(r => {
                             var rpi = this.content = r.data
@@ -199,12 +157,10 @@
                         })
                         .catch(e => {
                             console.log(e)
-                            this.errored = true
                         })
             }
         })
     </script>
-
 </body>
 
 </html>

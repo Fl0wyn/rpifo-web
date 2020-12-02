@@ -1,7 +1,6 @@
 #!/bin/bash -e
 
 directory_rpifo='/var/www/rpifo/'
-cron_rpifo='/etc/cron.d/rpifo'
 version=$(curl -s https://raw.githubusercontent.com/debmus/rpifo-web/master/VERSION)
 SUCCESS=$(echo -e "[\e[32m✔\e[0m] Success :")
 ERROR=$(echo -e "[\e[31m✖\e[0m] Error :")
@@ -22,17 +21,14 @@ function packages_install() {
 }
 
 function install_rpifo() {
-	if [ ! -e $directory_rpifo ] && [ ! -e $directory_rpifo ]; then
-		mkdir $directory_rpifo
-		chown pi:pi -R $directory_rpifo
+	if [ -e $directory_rpifo ] && [ -e $directory_rpifo ]; then
+		rm -rf /var/www/rpifo/*
 	fi
 
-	rm -rf /var/www/rpifo/*
-
 	git clone https://github.com/debmus/rpifo-web.git $directory_rpifo
+	chown pi:pi -R $directory_rpifo
 
-	echo "# Exporting Pifo data every 5 minutes" >$cron_rpifo
-	echo "*/5 * * * * root ${directory_rpifo}export.sh" >>$cron_rpifo
+	echo -e "# Exporting Pifo data every 5 minutes\*/5 * * * * root ${directory_rpifo}export.sh" >/etc/cron.d/rpifo
 }
 
 function config_apache2() {

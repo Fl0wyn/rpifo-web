@@ -1,7 +1,8 @@
 #!/bin/bash -e
 
 directory_rpifo='/var/www/rpifo/'
-version=$(curl -s https://raw.githubusercontent.com/debmus/rpifo-web/master/VERSION)
+local_version=$(cat ${directory_rpifo}VERSION)
+git_version=$(curl -s https://raw.githubusercontent.com/debmus/rpifo-web/master/VERSION)
 SUCCESS=$(echo -e "[\e[32m✔\e[0m] Success :")
 ERROR=$(echo -e "[\e[31m✖\e[0m] Error :")
 packages_needed=("apache2" "git" "lsb-release" "nmap")
@@ -21,6 +22,12 @@ function packages_install() {
 }
 
 function install_rpifo() {
+
+	if [[ -e $directory_rpifo ]] && [[ -d $directory_rpifo ]] && [[ $local_version -eq $git_version ]]; then
+		echo -e "\n$ERROR Rpido already installed"
+		exit 0
+	fi
+
 	rm -rf /var/www/rpifo >/dev/null 2>&1
 	git clone https://github.com/debmus/rpifo-web.git $directory_rpifo
 	chown pi:pi -R $directory_rpifo
@@ -61,7 +68,7 @@ echo -e "|\e[32m\e[1m Rpifo-web\e[0m\e[1m  : WEB Responsive application for real
 echo "+-------------------------------------------------------------------------------+"
 echo ""
 echo " Install and upgrade script"
-echo " Version : $version"
+echo " Version : $git_version"
 echo " Github : https://github.com/debmus/rpifo-web"
 echo ""
 

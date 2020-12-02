@@ -1,8 +1,8 @@
-<p align="center">
+<h1 align="center">
 	<img src="https://debmus.github.io/rpifo-web/img/favicon.png"> 
-    <h1 align="center">Rpifo-web</h1>
-	<img src="https://img.shields.io/badge/version-2.0-gren.svg?style=for-the-badge">
-</p>
+    <br>
+    Rpifo-web
+</h1>
 
 WEB Responsive application for real-time Raspberry Pi monitoring (French interface)
 

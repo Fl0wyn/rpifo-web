@@ -28,7 +28,7 @@ function install_rpifo() {
 	git clone https://github.com/debmus/rpifo-web.git $directory_rpifo
 	chown pi:pi -R $directory_rpifo
 
-	echo -e "# Exporting Pifo data every 5 minutes\*/5 * * * * root ${directory_rpifo}export.sh" >/etc/cron.d/rpifo
+	echo -e "# Exporting Pifo data every 5 minutes\n*/5 * * * * root ${directory_rpifo}export.sh" >/etc/cron.d/rpifo
 }
 
 function config_apache2() {
@@ -80,6 +80,6 @@ elif [[ $check_config_apache2 = false ]]; then
 	echo "$ERROR Config Apache2 error"
 	exit 1
 else
-	echo "$SUCCESS Installation completed"
+	echo -e "\n$SUCCESS Installation completed"
 	echo "Server listening on : http://$(ip a show eth0 | awk 'NR == 3 {print substr($2,1, length($2)-3)}'):9696"
 fi

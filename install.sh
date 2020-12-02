@@ -16,22 +16,19 @@ echo " Version : $git_version"
 echo " Github : https://github.com/debmus/rpifo-web"
 echo ""
 
-
 if [[ $EUID -ne 0 ]]; then
 	echo "$ERROR Must be run as root"
 	exit 0
 fi
 
 function packages_install() {
-	read -p "Install packages $(echo \"${packages_needed[@]}\") ? [Y/n]: " answer
+	#read -p "Install packages $(echo \"${packages_needed[@]}\") ? [Y/n]: " answer
 
 	if [[ ! $answer =~ [Yy] ]]; then
 		exit 0
 	fi
 	apt update && apt install -y ${packages_needed[@]}
 }
-
-dpkg -s "${packages_needed[@]}" >/dev/null 2>&1 || packages_install
 
 function install_rpifo() {
 
@@ -86,6 +83,7 @@ EOF
 	systemctl restart apache2
 }
 
+dpkg -s "${packages_needed[@]}" >/dev/null 2>&1 || packages_install
 install_rpifo || check_install_rpifo='false'
 config_apache2 || check_config_apache2='false'
 

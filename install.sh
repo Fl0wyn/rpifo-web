@@ -7,6 +7,16 @@ SUCCESS=$(echo -e "[\e[32m✔\e[0m] Success :")
 ERROR=$(echo -e "[\e[31m✖\e[0m] Error :")
 packages_needed=("apache2" "git" "lsb-release")
 
+echo "+-------------------------------------------------------------------------------+"
+echo -e "|\e[32m\e[1m Rpifo-web\e[0m\e[1m  : WEB Responsive application for real-time Raspberry Pi monitoring\e[0m |"
+echo "+-------------------------------------------------------------------------------+"
+echo ""
+echo " Install and upgrade script"
+echo " Version : $git_version"
+echo " Github : https://github.com/debmus/rpifo-web"
+echo ""
+
+
 if [[ $EUID -ne 0 ]]; then
 	echo "$ERROR Must be run as root"
 	exit 0
@@ -20,6 +30,8 @@ function packages_install() {
 	fi
 	apt update && apt install -y ${packages_needed[@]}
 }
+
+dpkg -s "${packages_needed[@]}" >/dev/null 2>&1 || packages_install
 
 function install_rpifo() {
 
@@ -73,17 +85,6 @@ EOF
 	a2enmod headers >/dev/null
 	systemctl restart apache2
 }
-
-echo "+-------------------------------------------------------------------------------+"
-echo -e "|\e[32m\e[1m Rpifo-web\e[0m\e[1m  : WEB Responsive application for real-time Raspberry Pi monitoring\e[0m |"
-echo "+-------------------------------------------------------------------------------+"
-echo ""
-echo " Install and upgrade script"
-echo " Version : $git_version"
-echo " Github : https://github.com/debmus/rpifo-web"
-echo ""
-
-dpkg -s "${packages_needed[@]}" >/dev/null 2>&1 || packages_install
 
 install_rpifo || check_install_rpifo='false'
 config_apache2 || check_config_apache2='false'

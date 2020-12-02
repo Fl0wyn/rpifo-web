@@ -30,7 +30,7 @@ function install_rpifo() {
 	}
 
 	local_version_if=$(echo $local_version |tr '.' ',')
-	git_version_if=$(echo $local_version |tr '.' ',')
+	git_version_if=$(echo $git_version |tr '.' ',')
 
 	if [[ -e $directory_rpifo ]] && [[ -d $directory_rpifo ]]; then
 		if [[ $local_version_if -eq $git_version_if ]]; then

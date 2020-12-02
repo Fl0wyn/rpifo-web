@@ -17,7 +17,7 @@
                 <v-toolbar class="mb-2" color="#BC1142" dark flat>
                     <v-img class="lg-4 mr-4" max-width="32" src="img/logo.svg"></v-img>
                     <v-toolbar-title>
-                        Rpifo - {{ content.hote }} <v-chip class="ml-5" color="white" label outlined>Beta</v-chip>
+                        Rpifo - {{ content.hote }}
                     </v-toolbar-title>
                 </v-toolbar>
 
@@ -37,11 +37,15 @@
                                     </v-list-item>
                                 </v-list>
 
+                                <v-divider class="ma-6"></v-divider>
+
                                 <v-list-item>
                                     <v-list-item-content v-for="item in content.mem" :key="item.total">
                                         <v-list-item-title>
                                             <v-img src="img/memory.svg" max-width="20" class="mr-2 float-left">
-                                            </v-img>Mémoire ({{ item.totalH }})
+                                            </v-img>Mémoire
+                                            <br>
+                                            Total (<b>{{ item.totalH }}</b>) Libre (<b>{{ item.freeH }}</b>)
                                         </v-list-item-title>
 
                                         <v-progress-linear height="25"
@@ -56,7 +60,9 @@
                                     <v-list-item-content v-for="item in content.swap" :key="item.total">
                                         <v-list-item-title>
                                             <v-img src="img/swap.svg" max-width="20" class="mr-2 float-left">
-                                            </v-img>Swap ({{ item.totalH }})
+                                            </v-img>Swap
+                                            <br>
+                                            Total (<b>{{ item.totalH }}</b>) Libre (<b>{{ item.freeH }}</b>)
                                         </v-list-item-title>
 
                                         <v-progress-linear height="25"
@@ -71,7 +77,9 @@
                                     <v-list-item-content v-for="item in content.sd" :key="item.total">
                                         <v-list-item-title>
                                             <v-img src="img/sd.svg" max-width="20" class="mr-2 float-left">
-                                            </v-img>Carte SD ({{ item.totalH }})
+                                            </v-img>Carte SD
+                                            <br>
+                                            Total (<b>{{ item.totalH }}</b>) Libre (<b>{{ item.freeH }}</b>)
                                         </v-list-item-title>
 
                                         <v-progress-linear height="25"
@@ -131,12 +139,11 @@
         </v-app>
     </div>
 
-    <script src="lib/vue.js"></script>
-    <!--     <script src="lib/vue.min.js"></script> -->
+    <script src="lib/vue.min.js"></script>    
     <script src="lib/vuetify.min.js"></script>
     <script src="lib/axios.min.js"></script>
     <script>
-        new Vue({
+        var vm = new Vue({
             el: '#app',
             vuetify: new Vuetify(),
             data() {
@@ -145,15 +152,10 @@
                     version: ''
                 }
             },
-            mounted() {
-                fetch('/VERSION')
-                    .then(r => r.text())
-                    .then(t => {
-                        this.version = t
-                    }),
+            methods: {
+                vresult: function () {
                     axios
-                        .get('/result.json')
-
+                        .get('result.json')
                         .then(r => {
                             var rpi = this.content = r.data
                             document.title = 'Rpifo - ' + rpi.hote
@@ -161,8 +163,23 @@
                         .catch(e => {
                             console.log(e)
                         })
-            }
+                },
+            },
+            mounted() {
+                fetch('VERSION')
+                    .then(r => r.text())
+                    .then(t => {
+                        this.version = t
+                    },
+                    )
+            },
         })
+        vm.vresult()
+
+        this.interval = setInterval(() => {
+            vm.vresult()
+        }, 300000);
+
     </script>
 </body>
 

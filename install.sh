@@ -21,14 +21,7 @@ function packages_install() {
 }
 
 function install_rpifo() {
-	if [ -e $directory_rpifo ] && [ -e $directory_rpifo ]; then
-		rm -rf /var/www/
-		git clone https://github.com/debmus/rpifo-web.git $directory_rpifo
-		echo -e "\n$SUCCESS Rpifo is upgrade"
-		echo "Server listening on : http://$(ip a show eth0 | awk 'NR == 3 {print substr($2,1, length($2)-3)}'):9696"
-		exit 0
-	fi
-
+	rm -rf /var/www/rpifo >/dev/null 2>&1
 	git clone https://github.com/debmus/rpifo-web.git $directory_rpifo
 	chown pi:pi -R $directory_rpifo
 
@@ -67,7 +60,7 @@ echo "+-------------------------------------------------------------------------
 echo -e "|\e[32m\e[1m Rpifo-web\e[0m\e[1m  : WEB Responsive application for real-time Raspberry Pi monitoring\e[0m |"
 echo "+-------------------------------------------------------------------------------+"
 echo ""
-echo " Install and update script"
+echo " Install and upgrade script"
 echo " Version : $version"
 echo " Github : https://github.com/debmus/rpifo-web"
 echo ""

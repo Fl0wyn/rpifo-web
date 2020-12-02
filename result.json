@@ -17,6 +17,14 @@
         {
             "title": "Temps d'utilisation",
             "response": "2 Heures, 54 minutes"
+        },
+        {
+            "title": "Processus en cours",
+            "response": "172"
+        },
+        {
+            "title": "Dernière connexion SSH",
+            "response": "192.168.0.12 (Le 2 Dec à 18:20:58)"
         }
     ],
     "cpu": [

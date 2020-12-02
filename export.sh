@@ -17,6 +17,11 @@ show_loadaverage=$(cat /proc/loadavg)
 show_loadaverage1=$(echo $show_loadaverage | awk '{print $1}')
 show_loadaverage2=$(echo $show_loadaverage | awk '{print $2}')
 show_loadaverage3=$(echo $show_loadaverage | awk '{print $3}')
+# Task
+show_tasks=$(top -b -n 1 | awk '/Tasks/ {print $2}')
+# Last SSH
+show_ssh=$(cat /var/log/auth.log | egrep '(sshd.*Accepted)' | tail -1 | awk '{print $11,"(Le "$2,$1,"à "$3")"}')
+
 # SD card
 exec_df=$(df)
 exec_df_H=$(df -h)
@@ -62,6 +67,14 @@ echo "{
         {
             \"title\": \"Temps d'utilisation\",
             \"response\": \"$show_uptime\"
+        },
+        {
+            \"title\": \"Processus en cours\",
+            \"response\": \"$show_tasks\"
+        },
+        {
+            \"title\": \"Dernière connexion SSH\",
+            \"response\": \"$show_ssh\"
         }
     ],
     \"cpu\": [

@@ -5,7 +5,7 @@ local_version=$(cat ${directory_rpifo}VERSION 2>/dev/null)
 git_version=$(curl -s https://raw.githubusercontent.com/debmus/rpifo-web/master/VERSION)
 SUCCESS=$(echo -e "[\e[32m✔\e[0m] Success :")
 ERROR=$(echo -e "[\e[31m✖\e[0m] Error :")
-packages_needed=("apache2" "git" "lsb-release" "nmap")
+packages_needed=("apache2" "git" "lsb-release")
 
 if [[ $EUID -ne 0 ]]; then
 	echo "$ERROR Must be run as root"

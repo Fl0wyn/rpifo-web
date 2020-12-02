@@ -26,7 +26,6 @@ function install_rpifo() {
 	function config_rpifo() {
 		rm -rf /var/www/rpifo >/dev/null 2>&1
 		git clone https://github.com/debmus/rpifo-web.git $directory_rpifo
-		chown pi:pi -R $directory_rpifo
 		chmod +x ${directory_rpifo}export.sh
 		bash ${directory_rpifo}export.sh
 	}

@@ -35,6 +35,7 @@ function install_rpifo() {
 			exit 0
 		else
 			config_rpifo
+			echo -e "\n$SUCCESS Upgrade $local_version to $git_version completed"
 			exit 0
 		fi
 	fi

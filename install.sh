@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 directory_rpifo='/var/www/rpifo/'
-local_version=$(cat ${directory_rpifo}VERSION)
+local_version=$(cat ${directory_rpifo}VERSION >/dev/null 2>&1)
 git_version=$(curl -s https://raw.githubusercontent.com/debmus/rpifo-web/master/VERSION)
 SUCCESS=$(echo -e "[\e[32m✔\e[0m] Success :")
 ERROR=$(echo -e "[\e[31m✖\e[0m] Error :")
@@ -30,7 +30,7 @@ function install_rpifo() {
 	}
 
 	if [[ -e $directory_rpifo ]] && [[ -d $directory_rpifo ]]; then
-		if [[ $local_version -eq $git_version ]]; then
+		if [ $local_version = $git_version ]; then
 			echo -e "\n$ERROR Rpido already installed"
 			exit 0
 		else
@@ -75,7 +75,7 @@ echo "+-------------------------------------------------------------------------
 echo -e "|\e[32m\e[1m Rpifo-web\e[0m\e[1m  : WEB Responsive application for real-time Raspberry Pi monitoring\e[0m |"
 echo "+-------------------------------------------------------------------------------+"
 echo ""
-echo " Install and upgrade script"
+echo " Install and upgrad script"
 echo " Version : $git_version"
 echo " Github : https://github.com/debmus/rpifo-web"
 echo ""

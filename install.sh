@@ -2,7 +2,7 @@
 
 directory_rpifo='/var/www/rpifo/'
 cron_rpifo='/etc/cron.d/rpifo'
-last_version=$(curl -s https://raw.githubusercontent.com/debmus/rpifo-web/master/VERSION)
+version=$(curl -s https://raw.githubusercontent.com/debmus/rpifo-web/master/VERSION)
 SUCCESS=$(echo -e "[\e[32m✔\e[0m] Success :")
 ERROR=$(echo -e "[\e[31m✖\e[0m] Error :")
 packages_needed=("apache2" "git" "lsb-release" "nmap")
@@ -68,7 +68,7 @@ echo -e "|\e[32m\e[1m Rpifo-web\e[0m\e[1m  : WEB Responsive application for real
 echo "+-------------------------------------------------------------------------------+"
 echo ""
 echo " Install and update script"
-echo " Version : $now_version"
+echo " Version : $version"
 echo " Github : https://github.com/debmus/rpifo-web"
 echo ""
 

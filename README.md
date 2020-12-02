@@ -4,7 +4,7 @@ WEB Responsive application for real-time Raspberry Pi monitoring (French interfa
 
 ![](https://i.imgur.com/U3eqkEz.png)
 
-## Installation and update :
+## Installation and upgrade :
 ```bash
 curl -Ls https://raw.githubusercontent.com/debmus/rpifo-web/master/install.sh| sudo bash
 ```

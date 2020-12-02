@@ -74,8 +74,16 @@ echo ""
 
 dpkg -s "${packages_needed[@]}" >/dev/null 2>&1 || packages_install
 
-install_rpifo || echo "$ERROR Installation Rpifo error" && exit 1
-config_apache2 || echo "$ERROR Config Apache2 error" && exit 1
+install_rpifo || check_install_rpifo='false'
+config_apache2 || check_config_apache2='false'
 
-echo "$SUCCESS Installation completed"
-echo "Server listening on : http://$(ip a show eth0 | awk 'NR == 3 {print substr($2,1, length($2)-3)}'):9696"
+if [[ $check_install_rpifo = false ]]; then
+	echo "$ERROR Installation Rpifo error"
+	exit 1
+elif [[ $check_config_apache2 = false ]]; then
+	echo "$ERROR Config Apache2 error"
+	exit 1
+else
+	echo "$SUCCESS Installation completed"
+	echo "Server listening on : http://$(ip a show eth0 | awk 'NR == 3 {print substr($2,1, length($2)-3)}'):9696"
+fi

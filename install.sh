@@ -23,15 +23,23 @@ function packages_install() {
 
 function install_rpifo() {
 
-	if [[ -e $directory_rpifo ]] && [[ -d $directory_rpifo ]] && [[ $local_version -eq $git_version ]]; then
-		echo -e "\n$ERROR Rpido already installed"
-		exit 0
+	function config_rpifo() {
+		rm -rf /var/www/rpifo >/dev/null 2>&1
+		git clone https://github.com/debmus/rpifo-web.git $directory_rpifo
+		chown pi:pi -R $directory_rpifo
+	}
+
+	if [[ -e $directory_rpifo ]] && [[ -d $directory_rpifo ]]; then
+		if [[ $local_version -eq $git_version ]]; then
+			echo -e "\n$ERROR Rpido already installed"
+			exit 0
+		else
+			config_rpifo
+			exit 0
+		fi
 	fi
 
-	rm -rf /var/www/rpifo >/dev/null 2>&1
-	git clone https://github.com/debmus/rpifo-web.git $directory_rpifo
-	chown pi:pi -R $directory_rpifo
-
+	config_rpifo
 	echo -e "# Exporting Pifo data every 5 minutes\n*/5 * * * * root ${directory_rpifo}export.sh" >/etc/cron.d/rpifo
 }
 

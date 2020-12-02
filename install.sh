@@ -27,10 +27,12 @@ function install_rpifo() {
 		rm -rf /var/www/rpifo >/dev/null 2>&1
 		git clone https://github.com/debmus/rpifo-web.git $directory_rpifo
 		chown pi:pi -R $directory_rpifo
+		chmod +x ${directory_rpifo}export.sh
+		bash ${directory_rpifo}export.sh
 	}
 
-	local_version_if=$(echo $local_version |tr '.' ',')
-	git_version_if=$(echo $git_version |tr '.' ',')
+	local_version_if=$(echo $local_version | tr '.' ',')
+	git_version_if=$(echo $git_version | tr '.' ',')
 
 	if [[ -e $directory_rpifo ]] && [[ -d $directory_rpifo ]]; then
 		if [[ $local_version_if -eq $git_version_if ]]; then
@@ -71,8 +73,6 @@ EOF
 	a2ensite rpifo >/dev/null
 	a2enmod headers >/dev/null
 	systemctl restart apache2
-	chmod +x ${directory_rpifo}export.sh
-	bash ${directory_rpifo}export.sh
 }
 
 echo "+-------------------------------------------------------------------------------+"

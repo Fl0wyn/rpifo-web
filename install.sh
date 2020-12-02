@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 directory_rpifo='/var/www/rpifo/'
-local_version=$(cat ${directory_rpifo}VERSION >/dev/null 2>&1)
+local_version=$(cat ${directory_rpifo}VERSION >/dev/null)
 git_version=$(curl -s https://raw.githubusercontent.com/debmus/rpifo-web/master/VERSION)
 SUCCESS=$(echo -e "[\e[32m✔\e[0m] Success :")
 ERROR=$(echo -e "[\e[31m✖\e[0m] Error :")

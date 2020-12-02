@@ -29,11 +29,11 @@ function install_rpifo() {
 		chown pi:pi -R $directory_rpifo
 	}
 
-	local_version=$(cat ${directory_rpifo}VERSION |tr '.' ',' >/dev/null 2>&1)
-	git_version=$(curl -s https://raw.githubusercontent.com/debmus/rpifo-web/master/VERSION |tr '.' ',' )
+	local_version_if=$(echo $local_version |tr '.' ',')
+	git_version_if=$(echo $local_version |tr '.' ',')
 
 	if [[ -e $directory_rpifo ]] && [[ -d $directory_rpifo ]]; then
-		if [[ $local_version -eq $git_version ]]; then
+		if [[ $local_version_if -eq $git_version_if ]]; then
 			echo -e "\n$ERROR Rpido already installed"
 			exit 0
 		else

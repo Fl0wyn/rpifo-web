@@ -22,7 +22,11 @@ function packages_install() {
 
 function install_rpifo() {
 	if [ -e $directory_rpifo ] && [ -e $directory_rpifo ]; then
-		rm -rf /var/www/rpifo/*
+		rm -rf /var/www/
+		git clone https://github.com/debmus/rpifo-web.git $directory_rpifo
+		echo -e "\n$SUCCESS Rpifo is upgrade"
+		echo "Server listening on : http://$(ip a show eth0 | awk 'NR == 3 {print substr($2,1, length($2)-3)}'):9696"
+		exit 0
 	fi
 
 	git clone https://github.com/debmus/rpifo-web.git $directory_rpifo

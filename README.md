@@ -1,5 +1,5 @@
 <h1 align="center">
-	<img src="https://debmus.github.io/rpifo-web/img/favicon.png"> 
+	<img src="https://raw.githubusercontent.com/debmus/rpifo-web/master/src/img/favicon.png">
     <br>
     Rpifo-web
 </h1>

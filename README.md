@@ -67,7 +67,7 @@ The server is now listening on : `http://<rpi_ip>:9696`
 ## Upgrade version
 ```bash
 sudo rm -rf /var/www/rpifo
-git clone https://github.com/debmus/rpifo-web.git /var/www/rpifo/
+sudo git clone https://github.com/debmus/rpifo-web.git /var/www/rpifo/
 sudo chmod +x /var/www/rpifo/src/export.sh
 sudo bash /var/www/rpifo/src/export.sh
 ```

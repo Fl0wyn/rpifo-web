@@ -9,21 +9,27 @@ WEB Responsive application for real-time Raspberry Pi monitoring (French interfa
 Satic démo :
 https://debmus.github.io/rpifo-web
 
-## Install :
+## Project setup
 ```bash
+# Install needed packages
+sudo apt update
 sudo apt install apache2 git lsb-release
 
-git clone https://github.com/debmus/rpifo-web.git /var/www/rpifo/
+# Clone repo
+sudo git clone https://github.com/debmus/rpifo-web.git /var/www/rpifo/
 
-sudo chmod +x /var/www/rpifo/export.sh
-sudo bash /var/www/rpifo/export.sh
-echo -e "# Exporting Pifo data every 5 minutes\n*/5 * * * * root /var/www/rpifo/export.sh" >/etc/cron.d/rpifo
+sudo chmod +x /var/www/rpifo/src/export.sh
+sudo bash /var/www/rpifo/src/export.sh
+
+# Add cron task every 5 minutes
+echo -e "# Exporting Pifo data every 5 minutes\n*/5 * * * * root /var/www/rpifo/src/export.sh" | sudo tee /etc/cron.d/rpifo
 ```
 
-## Apache2
+## Exemple apache2 config
+```bash
+sudo nano /etc/apache2/sites-available/rpifo.conf
+```
 ```apache
-# Exemple apache2 config
-# Create file : /etc/apache2/sites-available/rpifo.conf
 <VirtualHost *:9696>
 
 	DocumentRoot /var/www/rpifo
@@ -37,30 +43,36 @@ echo -e "# Exporting Pifo data every 5 minutes\n*/5 * * * * root /var/www/rpifo/
 		Require all granted
 	</Directory>
 
-	ErrorLog /var/log/apache2/error.log
+	ErrorLog /var/log/apache2_/error.log
 	CustomLog /var/log/apache2/access.log common
 
 </VirtualHost>
 ```
-
 ```bash
+# Add port '9696' in apache2 port config file
 sudo sed -i '/^Listen.*/a Listen 9696' /etc/apache2/ports.conf
+
+# Enabled this config
 sudo a2ensite rpifo
+
+# Enabled 'headers' module and restart service
 sudo a2enmod headers
 sudo systemctl restart apache2
 ```
 
-`The server is now listening on : http://<your ip>:9696`
+### The server is now listening on : `http://<your_ip>:9696`
 
-## Upgrade :
+***
+
+## Upgrade version
 ```bash
-sudo rm -rf /var/www/rpifo/
+sudo rm -rf /var/www/rpifo
 git clone https://github.com/debmus/rpifo-web.git /var/www/rpifo/
-sudo chmod +x /var/www/rpifo/export.sh
-sudo bash /var/www/rpifo/export.sh
+sudo chmod +x /var/www/rpifo/src/export.sh
+sudo bash /var/www/rpifo/src/export.sh
 ```
 
-## Remove :
+## Remove Project
 ```bash
 sudo rm -rf /var/www/rpifo /etc/cron.d/rpifo /etc/apache2/sites-available/rpifo.conf
 sudo a2dissite rpifo

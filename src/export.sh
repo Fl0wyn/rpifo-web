@@ -116,4 +116,4 @@ echo "{
             \"freeH\": \"$show_sd_free_H\"
         }
     ]
-}" >/var/www/rpifo/result.json
+}" >/var/www/rpifo/src/result.json

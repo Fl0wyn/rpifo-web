@@ -43,7 +43,7 @@ sudo nano /etc/apache2/sites-available/rpifo.conf
 		Require all granted
 	</Directory>
 
-	ErrorLog /var/log/apache2_/error.log
+	ErrorLog /var/log/apache2/error.log
 	CustomLog /var/log/apache2/access.log common
 
 </VirtualHost>
@@ -60,7 +60,7 @@ sudo a2enmod headers
 sudo systemctl restart apache2
 ```
 
-The server is now listening on : `http://<your_ip>:9696`
+The server is now listening on : `http://<rpi_ip>:9696`
 
 ***
 

@@ -60,7 +60,7 @@ sudo a2enmod headers
 sudo systemctl restart apache2
 ```
 
-> The server is now listening on : `http://<your_ip>:9696`
+The server is now listening on : `http://<your_ip>:9696`
 
 ***
 

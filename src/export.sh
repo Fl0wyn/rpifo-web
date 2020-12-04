@@ -11,7 +11,7 @@ show_kernel=$(uname -srm)
 # Temperature
 show_temp=$(vcgencmd measure_temp | egrep -o '[0-9]*\.[0-9]*')
 # Uptime
-show_uptime=$(uptime -p | sed 's/up //g; s/hour/Heure/g; s/hours/Heures/g; s/days/Jours/g; s/weeks/Semaines/g; s/month/Mois/g')
+show_uptime=$(uptime -p | sed 's/up //g; s/hour/Heure/g; s/hours/Heures/g; s/day/Jour/g; s/days/Jours/g; s/week/Semaine/g; s/weeks/Semaines/g; s/month/Mois/g')
 # CPU Load
 show_loadaverage=$(cat /proc/loadavg)
 show_loadaverage1=$(echo $show_loadaverage | awk '{print $1}')

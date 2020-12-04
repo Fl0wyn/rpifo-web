@@ -141,7 +141,7 @@ var vm = new Vue({
     methods: {
         vresult: function () {
             axios
-                .get('result.json')
+                .get('./src/result.json')
                 .then(r => {
                     var rpi = this.content = r.data
                     document.title = 'Rpifo - ' + rpi.hote
@@ -152,7 +152,7 @@ var vm = new Vue({
         },
     },
     mounted() {
-        fetch('/VERSION')
+        fetch('./VERSION')
             .then(r => r.text())
             .then(t => {
                 this.version = t

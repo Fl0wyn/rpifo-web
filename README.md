@@ -72,7 +72,7 @@ sudo chmod +x /var/www/rpifo/src/export.sh
 sudo bash /var/www/rpifo/src/export.sh
 ```
 
-## Remove Project
+## Remove project
 ```bash
 sudo rm -rf /var/www/rpifo /etc/cron.d/rpifo /etc/apache2/sites-available/rpifo.conf
 sudo a2dissite rpifo

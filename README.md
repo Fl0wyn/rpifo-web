@@ -28,7 +28,8 @@ sudo chmod +x /var/www/rpifo/src/export.sh
 sudo bash /var/www/rpifo/src/export.sh
 
 # Add cron task every 5 minutes
-echo -e "# Exporting Pifo data every 5 minutes\n*/5 * * * * root /var/www/rpifo/src/export.sh" | sudo tee /etc/cron.d/rpifo
+echo "# Exporting Pifo data every 5 minutes
+*/5 * * * * root /var/www/rpifo/src/export.sh > /var/www/rpifo/src/result.json" | sudo tee /etc/cron.d/rpifo
 ```
 
 ```bash

@@ -7,7 +7,8 @@ sudo apt install -y golang git lsb-release
 cd ${HOME}
 git clone https://github.com/debmus/rpifo-web.git
 
-echo -e "# Exporting Rpifo data every 5 minutes\n*/5 * * * * root ${DIR_RPIFO}/src/export.sh" | sudo tee /etc/cron.d/rpifo-web
+echo "# Exporting Rpifo data every 5 minutes
+*/5 * * * * root ${DIR_RPIFO}/src/export.sh > ${DIR_RPIFO}/src/result.json " | sudo tee /etc/cron.d/rpifo-web
 
 nohup go run ${DIR_RPIFO}server.go >/dev/null 2>&1 &
 rm -f nohup.out

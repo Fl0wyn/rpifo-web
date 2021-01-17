@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	fs := http.FileServer(http.Dir("."))
+	fs := http.FileServer(http.Dir("/rpifo-web/"))
 	log.Fatal(http.ListenAndServe(":9696", fs))
 }

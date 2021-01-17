@@ -13,6 +13,8 @@ https://debmus.github.io/rpifo-web
 # Quick install
 ```bash
 curl -L https://raw.githubusercontent.com/debmus/rpifo-web/master/install.sh | bash
+cd rpifo-web
+./rpifo-web.sh start
 ```
 
 # Manually install with apache2

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+DIR_RPIFO="${HOME}/rpifo-web/"
 CHECK_GO=$(echo -e "[\e[32m✔\e[0m]")
 
 if [ -z $1 ]; then
@@ -7,12 +8,11 @@ if [ -z $1 ]; then
 else
     case $1 in
     start)
-        nohup go run server.go >/dev/null 2>&1 &
-        PID_GO=$(echo $!)
+        nohup go run rpifo.go >/dev/null 2>&1 &
         echo -e "$CHECK_GO Server listening on : http://$(ip a show eth0 | awk 'NR == 3 {print substr($2,1, length($2)-3)}'):9696"
         ;;
     stop)
-        kill $PID_GO
+        ps -ef | awk '/[r]pifo/ { print $2 }' | xargs kill >/dev/null 2>&1 &
         echo -e "$CHECK_GO Server stoped"
         ;;
     *) echo "Bye" ;;

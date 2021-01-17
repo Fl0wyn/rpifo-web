@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	fs := http.FileServer(http.Dir("src"))
+	fs := http.FileServer(http.Dir("."))
 	log.Fatal(http.ListenAndServe(":9696", fs))
 }

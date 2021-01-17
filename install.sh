@@ -5,7 +5,7 @@ DIR_RPIFO="${HOME}/rpifo-web/"
 sudo apt install -y golang git lsb-release
 git clone https://github.com/debmus/rpifo-web.gi $DIR_RPIFO
 
-echo -e "# Exporting Rpifo data every 5 minutes\n*/5 * * * * root ${DIR_RPIFO}export.sh" | sudo tee /etc/cron.d/rpifo-web
+echo -e "# Exporting Rpifo data every 5 minutes\n*/5 * * * * root ${DIR_RPIFO}/src/export.sh" | sudo tee /etc/cron.d/rpifo-web
 
 cd $DIR_RPIFO
 nohup go run server.go >/dev/null 2>&1 &

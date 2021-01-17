@@ -4,7 +4,7 @@ document.getElementById('app-rpifo').innerHTML = (`
         <v-main>
 
             <v-toolbar class="mb-2" color="#BC1142" dark flat>
-                <v-img class="lg-4 mr-4" max-width="32" src="img/logo.svg"></v-img>
+                <v-img class="lg-4 mr-4" max-width="32" src="src/img/logo.svg"></v-img>
                 <v-toolbar-title>
                     Rpifo - {{ content.hote }}
                 </v-toolbar-title>
@@ -31,7 +31,7 @@ document.getElementById('app-rpifo').innerHTML = (`
                             <v-list-item>
                                 <v-list-item-content v-for="item in content.mem" :key="item.total">
                                     <v-list-item-title>
-                                        <v-img src="img/memory.svg" max-width="20" class="mr-2 float-left">
+                                        <v-img src="src/img/memory.svg" max-width="20" class="mr-2 float-left">
                                         </v-img>Mémoire
                                         <br>
                                         Total (<b>{{ item.totalH }}</b>) Libre (<b>{{ item.freeH }}</b>)
@@ -48,7 +48,7 @@ document.getElementById('app-rpifo').innerHTML = (`
                             <v-list-item>
                                 <v-list-item-content v-for="item in content.swap" :key="item.total">
                                     <v-list-item-title>
-                                        <v-img src="img/swap.svg" max-width="20" class="mr-2 float-left">
+                                        <v-img src="src/img/swap.svg" max-width="20" class="mr-2 float-left">
                                         </v-img>Swap
                                         <br>
                                         Total (<b>{{ item.totalH }}</b>) Libre (<b>{{ item.freeH }}</b>)
@@ -65,7 +65,7 @@ document.getElementById('app-rpifo').innerHTML = (`
                             <v-list-item>
                                 <v-list-item-content v-for="item in content.sd" :key="item.total">
                                     <v-list-item-title>
-                                        <v-img src="img/sd.svg" max-width="20" class="mr-2 float-left">
+                                        <v-img src="src/img/sd.svg" max-width="20" class="mr-2 float-left">
                                         </v-img>Carte SD
                                         <br>
                                         Total (<b>{{ item.totalH }}</b>) Libre (<b>{{ item.freeH }}</b>)
@@ -86,7 +86,7 @@ document.getElementById('app-rpifo').innerHTML = (`
                         <v-card>
 
                             <v-card-title class="subtitle-1">
-                                <v-img src="img/temp.svg" max-width="24" class="mr-2">
+                                <v-img src="src/img/temp.svg" max-width="24" class="mr-2">
                                 </v-img>
                                 Température
                             </v-card-title>
@@ -98,7 +98,7 @@ document.getElementById('app-rpifo').innerHTML = (`
                             </v-card-actions>
 
                             <v-card-title class="subtitle-1">
-                                <v-img src="img/cpu.svg" max-width="24" class="mr-2">
+                                <v-img src="src/img/cpu.svg" max-width="24" class="mr-2">
                                 </v-img>
                                 Charge CPU
                             </v-card-title>
@@ -141,7 +141,7 @@ var vm = new Vue({
     methods: {
         vresult: function () {
             axios
-                .get('./result.json')
+                .get('./src/result.json')
                 .then(r => {
                     var rpi = this.content = r.data
                     document.title = 'Rpifo - ' + rpi.hote

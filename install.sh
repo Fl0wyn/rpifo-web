@@ -9,7 +9,8 @@ cd ${HOME}
 git clone https://github.com/debmus/rpifo-web.git
 
 echo "# Exporting Rpifo data every 5 minutes
-*/5 * * * * root ${DIR_RPIFO}/src/export.sh > ${DIR_RPIFO}/src/result.json " | sudo tee /etc/cron.d/rpifo-web
+*/5 * * * * root ${DIR_RPIFO}src/export.sh > ${DIR_RPIFO}src/result.json " | sudo tee /etc/cron.d/rpifo-web
 
-echo -e "$CHECK_GO Server installed"
+chmod +x ${DIR_RPIFO}src/export.sh
+echo -e "\n$CHECK_GO Server installed"
 bash ${DIR_RPIFO}rpifo-web.sh

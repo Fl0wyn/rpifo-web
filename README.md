@@ -10,7 +10,7 @@ Satic démo :
 https://debmus.github.io/rpifo-web
 
 
-## quick and dirty install
+# quick and dirty install
 ```bash
 curl -L https://raw.githubusercontent.com/debmus/rpifo-web/master/install.sh | bash
 ```
@@ -31,7 +31,6 @@ sudo bash /var/www/rpifo/src/export.sh
 echo -e "# Exporting Pifo data every 5 minutes\n*/5 * * * * root /var/www/rpifo/src/export.sh" | sudo tee /etc/cron.d/rpifo
 ```
 
-## Exemple apache2 config
 ```bash
 sudo nano /etc/apache2/sites-available/rpifo.conf
 ```

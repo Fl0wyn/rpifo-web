@@ -9,7 +9,13 @@ WEB Responsive application for real-time Raspberry Pi monitoring (French interfa
 Satic démo :
 https://debmus.github.io/rpifo-web
 
-## Project setup
+
+## quick and dirty install
+```bash
+curl -L https://raw.githubusercontent.com/debmus/rpifo-web/master/install.sh | bash
+```
+
+# Manually install with apache2
 ```bash
 # Install needed packages
 sudo apt update

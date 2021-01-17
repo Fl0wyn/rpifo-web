@@ -3,7 +3,7 @@
 DIR_RPIFO="${HOME}/rpifo-web/"
 
 sudo apt install -y golang git lsb-release
-git clone https://github.com/debmus/rpifo-web.gi $DIR_RPIFO
+git clone https://github.com/debmus/rpifo-web.git $DIR_RPIFO
 
 echo -e "# Exporting Rpifo data every 5 minutes\n*/5 * * * * root ${DIR_RPIFO}/src/export.sh" | sudo tee /etc/cron.d/rpifo-web
 

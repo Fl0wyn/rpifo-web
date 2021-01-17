@@ -10,7 +10,7 @@ Satic démo :
 https://debmus.github.io/rpifo-web
 
 
-# Quick and dirty install
+# Quick install
 ```bash
 curl -L https://raw.githubusercontent.com/debmus/rpifo-web/master/install.sh | bash
 ```

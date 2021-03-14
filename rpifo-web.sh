@@ -10,6 +10,7 @@ else
     start)
         nohup go run rpifo.go >/dev/null 2>&1 &
         echo -e "$CHECK_GO Server listening on : http://$(ip a show eth0 | awk 'NR == 3 {print substr($2,1, length($2)-3)}'):9696"
+        ${DIR_RPIFO}src/export.sh > ${DIR_RPIFO}src/result.json
         ;;
     stop)
         ps -ef | awk '/[r]pifo/ { print $2 }' | xargs kill >/dev/null 2>&1 &

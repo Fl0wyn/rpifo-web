@@ -3,6 +3,7 @@
 DIR_RPIFO="${HOME}/rpifo-web/"
 CHECK_GO=$(echo -e "[\e[32m✔\e[0m]")
 
+sudo apt update
 sudo apt install -y golang git lsb-release
 
 cd ${HOME}

@@ -1,11 +1,5 @@
 #!/bin/bash
 
-: '
-crontab -e
-## RPIFO
-* * * * * $HOME/test/export.sh
-'
-
 show_host=$(hostname)
 show_temp="$(sudo vcgencmd measure_temp | tr -d -c .0-9)"
 
@@ -48,4 +42,4 @@ func() {
 
 }
 
-func >$HOME/test/result.json
+func >$HOME/.rpifo/scripts/result.json

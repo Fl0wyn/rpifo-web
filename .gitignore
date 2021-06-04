@@ -1,5 +1,4 @@
 .perso
 dist
 node_modules
-rpifo*
 _test_

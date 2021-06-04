@@ -4,7 +4,7 @@ DIR_RPIFO="${HOME}/rpifo-web/"
 CHECK_GO=$(echo -e "[\e[32m✔\e[0m]")
 
 if [ -z $1 ]; then
-    echo -e "# Rpifo-Web\n\ncd $DIR_RPIFO\n./rpifo-web.sh start|stop"
+    echo -e "# Rpifo-Web\n\ncd $DIR_RPIFO\n./app.sh start|stop"
 else
     case $1 in
     start)

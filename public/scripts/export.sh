@@ -42,4 +42,4 @@ func() {
 
 }
 
-func >$HOME/.rpifo/scripts/result.json
+func >$HOME/rpifo-web/scripts/result.json

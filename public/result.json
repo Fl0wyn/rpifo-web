@@ -13,7 +13,7 @@
         },
         {
             "title": "Distribution",
-            "response": "Raspbian GNU/Linux 9 (buster 9.5)"
+            "response": "Raspbian GNU/Linux 9 (stretch 9.5)"
         },
         {
             "title": "Kernel version",

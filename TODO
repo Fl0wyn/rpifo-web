@@ -1,4 +1,4 @@
--> Serveur Web Python dans le install.sh
--> MAJ Readme install (URL dist)
--> Manuel (apache2, nginx)
--> compile
+[ok] Serveur Web Python dans le install.sh
+[-] README.md --> Installation (URL dist)
+[-] README.md --> Manuel (apache2, nginx)
+[-] README.md --> compile

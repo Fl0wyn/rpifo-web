@@ -1,4 +1,7 @@
+_test_
 .perso
 dist
 node_modules
-_test_
+rpifo*
+
+site

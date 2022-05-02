@@ -1,0 +1,63 @@
+{
+  "name": "rpifo-web",
+  "version": "3.0.0",
+  "main": "babel.config.js",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fl0wyn/d.git"
+  },
+  "keywords": [],
+  "author": "Debmus",
+  "license": "GNU v3",
+  "bugs": {
+    "url": "https://github.com/Fl0wyn/d/issues"
+  },
+  "homepage": "https://github.com/Fl0wyn/d#readme",
+  "dependencies": {
+    "@mdi/font": "^5.9.55",
+    "axios": "^0.21.1",
+    "core-js": "^3.13.1",
+    "typeface-roboto": "^1.1.13",
+    "vue": "^2.6.12",
+    "vue-svg-gauge": "^1.2.1",
+    "vuetify": "^2.5.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.5.13",
+    "@vue/cli-plugin-eslint": "^4.5.13",
+    "@vue/cli-plugin-router": "^4.5.13",
+    "@vue/cli-service": "^4.5.13",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^7.10.0",
+    "sass": "^1.34.0",
+    "sass-loader": "^10.2.0",
+    "vue-cli-plugin-vuetify": "^2.4.0",
+    "vue-template-compiler": "^2.6.12",
+    "vuetify-loader": "^1.7.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

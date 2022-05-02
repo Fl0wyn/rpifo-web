@@ -1,0 +1,35 @@
+{
+    "host": "srv-rpi",
+    "temp": "56.8",
+    "cpu": "1.87 0.77 0.92",
+    "task": "148",
+    "df": "230492824 97901336 123193836",
+    "mem": "4012142 264441 147939",
+    "swap": "104853 1933 102920",
+    "info": [
+        {
+            "title": "Model",
+            "response": "Raspberry Pi 3 Model B"
+        },
+        {
+            "title": "Distribution",
+            "response": "Raspbian GNU/Linux 9 (stretch 9.5)"
+        },
+        {
+            "title": "Kernel version",
+            "response": "Linux 4.9.17-v7l+ armv7l"
+        },
+        {
+            "title": "IP address",
+            "response": "192.168.10.1"
+        },
+        {
+            "title": "Uptime",
+            "response": "2 week, 3 days, 1 hour, 26 minutes"
+        },
+        {
+            "title": "Last SSH login",
+            "response": "192.168.10.2 (Jun 1 17:33:26)"
+        }
+    ]
+}

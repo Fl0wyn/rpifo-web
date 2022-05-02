@@ -20,7 +20,7 @@
   "homepage": "https://github.com/Fl0wyn/d#readme",
   "dependencies": {
     "@mdi/font": "^5.9.55",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "core-js": "^3.13.1",
     "typeface-roboto": "^1.1.13",
     "vue": "^2.6.12",

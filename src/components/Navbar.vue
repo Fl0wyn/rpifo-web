@@ -1,12 +1,12 @@
 <template>
   <div>
-    <v-app-bar app color="white">
-      <v-icon x-large color="primary">mdi-raspberry-pi</v-icon>
-      <v-toolbar-title class="mx-8"> Rpifo </v-toolbar-title>
+    <v-app-bar elevation='1'>
+      <v-icon large color="primary">mdi-raspberry-pi</v-icon>
+      <v-toolbar-title class="mx-4"> Rpifo </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-toolbar-title>
-        {{ heure }}
-      </v-toolbar-title>
+<!--       <v-toolbar-title>
+        
+      </v-toolbar-title> -->
     </v-app-bar>
   </div>
 </template>

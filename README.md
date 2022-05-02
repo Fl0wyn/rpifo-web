@@ -1,7 +1,7 @@
 WEB Responsive application for real-time Raspberry Pi monitoring
 
 Satic démo :
-https://debmus.github.io/rpifo-web
+https://fl0wyn.github.io/rpifo-web
 
 
 # Quick install

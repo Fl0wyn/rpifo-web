@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/debmus/d.git"
+    "url": "git+https://github.com/Fl0wyn/d.git"
   },
   "keywords": [],
   "author": "Debmus",
   "license": "GNU v3",
   "bugs": {
-    "url": "https://github.com/debmus/d/issues"
+    "url": "https://github.com/Fl0wyn/d/issues"
   },
-  "homepage": "https://github.com/debmus/d#readme",
+  "homepage": "https://github.com/Fl0wyn/d#readme",
   "dependencies": {
     "@mdi/font": "^5.9.55",
     "axios": "^0.21.1",
